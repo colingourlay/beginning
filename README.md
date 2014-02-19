@@ -1,0 +1,3 @@
+# beginning
+
+    $ npm start

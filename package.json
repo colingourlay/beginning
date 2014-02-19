@@ -1,0 +1,49 @@
+{
+  "name": "beginning",
+  "version": "0.0.0",
+  "description": "A place to start",
+  "author": {
+    "name": "Colin Gourlay",
+    "email": "colin@colin-gourlay.com",
+    "url": "http://colin-gourlay.com"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/colingourlay/beginning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/colingourlay/beginning/issues"
+  },
+  "homepage": "https://github.com/colingourlay/beginning",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "~3.30.1",
+    "normalizecss": "~3.0.0"
+  },
+  "devDependencies": {
+    "uglifyjs": "~2.3.6",
+    "watchify": "~0.6.1",
+    "resinate": "~0.1.0",
+    "clean-css": "~2.1.1",
+    "gazer": "0.0.3"
+  },
+  "scripts": {
+    "build-assets": "rsync -a src/assets/ app",
+    "build-styles": "resinate -s src/styles/index.css -b 'last 1 version' 'ios' 'android 4' -e -v | cleancss -o app/index.css",
+    "build-scripts": "browserify src/scripts/index.js | uglifyjs -mc > app/index.js",
+    "build": "npm run clean && npm run build-assets && npm run build-styles && npm run build-scripts",
+    "devbuild-assets": "rsync -av src/assets/ app",
+    "devbuild-styles": "resinate -s src/styles/index.css -b 'last 1 version' 'ios' 'android 4' -e -v > app/index.css",
+    "devbuild-scripts": "browserify src/scripts/index.js -d -o app/index.js",
+    "devbuild": "npm run clean && npm run devbuild-assets && npm run devbuild-styles && npm run devbuild-scripts",
+    "watch-assets": "gazer -p src/assets/**/* npm run devbuild-assets",
+    "watch-styles": "gazer -p src/styles/**/* npm run devbuild-styles",
+    "watch-scripts": "watchify src/scripts/index.js -o app/index.js -dv",
+    "watch": "npm run watch-assets & npm run watch-styles & npm run watch-scripts",
+    "server": "static app -p 8000",
+    "clean": "rm -rf app && mkdir app",
+    "dev": "npm run devbuild && npm run server & npm run watch",
+    "start": "npm install && npm run dev"
+  }
+}

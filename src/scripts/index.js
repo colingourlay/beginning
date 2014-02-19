@@ -1,0 +1,1 @@
+document.write('<h1 class="beginning">beginning</h1>');
