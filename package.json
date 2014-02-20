@@ -26,7 +26,8 @@
     "watchify": "~0.6.1",
     "resinate": "~0.1.0",
     "clean-css": "~2.1.1",
-    "gazer": "0.0.3"
+    "gazer": "0.0.3",
+    "st": "~0.3.1"
   },
   "scripts": {
     "build-assets": "rsync -a src/assets/ app",
@@ -41,7 +42,7 @@
     "watch-styles": "gazer -p src/styles/**/* npm run devbuild-styles",
     "watch-scripts": "watchify src/scripts/index.js -o app/index.js -dv",
     "watch": "npm run watch-assets & npm run watch-styles & npm run watch-scripts",
-    "server": "static app -p 8000",
+    "server": "st -d app -i index.html -p 8000",
     "clean": "rm -rf app && mkdir app",
     "dev": "npm run devbuild && npm run server & npm run watch",
     "start": "npm install && npm run dev"
