@@ -1,5 +1,5 @@
+@import "css-box-sizing-border-box";
 @import "./root.css";
-@import "normalizecss";
 
 .beginning {
     color: var(beginning-color);

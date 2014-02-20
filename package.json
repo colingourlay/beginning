@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "browserify": "~3.30.1",
-    "normalizecss": "~3.0.0"
+    "css-box-sizing-border-box": "~0.1.0"
   },
   "devDependencies": {
     "uglifyjs": "~2.3.6",
