@@ -24,18 +24,19 @@
   "devDependencies": {
     "uglifyjs": "~2.3.6",
     "watchify": "~0.6.1",
-    "resinate": "~0.1.0",
     "clean-css": "~2.1.1",
     "gazer": "0.0.3",
-    "st": "~0.3.1"
+    "st": "~0.3.1",
+    "rework-npm-cli": "0.0.1",
+    "myth": "~0.3.0"
   },
   "scripts": {
     "build-assets": "rsync -a src/assets/ app",
-    "build-styles": "resinate -s src/styles/index.css -b 'last 1 version' 'ios' 'android 4' -e -v | cleancss -o app/index.css",
+    "build-styles": "cd src/styles && rework-npm index.css | myth | cleancss -o ../../app/index.css",
     "build-scripts": "browserify src/scripts/index.js | uglifyjs -mc > app/index.js",
     "build": "npm run clean && npm run build-assets && npm run build-styles && npm run build-scripts",
     "devbuild-assets": "rsync -av src/assets/ app",
-    "devbuild-styles": "resinate -s src/styles/index.css -b 'last 1 version' 'ios' 'android 4' -e -v > app/index.css",
+    "devbuild-styles": "cd src/styles && rework-npm index.css | myth -v > ../../app/index.css",
     "devbuild-scripts": "browserify src/scripts/index.js -d -o app/index.js",
     "devbuild": "npm run clean && npm run devbuild-assets && npm run devbuild-styles && npm run devbuild-scripts",
     "watch-assets": "gazer -p src/assets/**/* npm run devbuild-assets",

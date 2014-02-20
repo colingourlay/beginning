@@ -1,8 +1,5 @@
+@import "./root.css";
 @import "normalizecss";
-
-:root {
-    var-beginning-color: blue;
-}
 
 .beginning {
     color: var(beginning-color);
