@@ -39,13 +39,13 @@
     "devbuild-styles": "cd src/styles && rework-npm index.css | myth -v > ../../app/index.css",
     "devbuild-scripts": "browserify src/scripts/index.js -d -o app/index.js",
     "devbuild": "npm run clean && npm run devbuild-assets && npm run devbuild-styles && npm run devbuild-scripts",
-    "watch-assets": "gazer -p src/assets/**/* npm run devbuild-assets",
-    "watch-styles": "gazer -p src/styles/**/* npm run devbuild-styles",
-    "watch-scripts": "watchify src/scripts/index.js -o app/index.js -dv",
-    "watch": "npm run watch-assets & npm run watch-styles & npm run watch-scripts",
+    "watch-assets": "gazer -p src/assets/**/* npm run devbuild-assets &",
+    "watch-styles": "gazer -p src/styles/**/* npm run devbuild-styles &",
+    "watch-scripts": "watchify src/scripts/index.js -o app/index.js -dv &",
+    "watch": "npm run watch-assets && npm run watch-styles && npm run watch-scripts",
     "server": "st -d app -i index.html -p 8000",
     "clean": "rm -rf app && mkdir app",
-    "dev": "npm run devbuild && npm run server & npm run watch",
+    "dev": "npm run devbuild && npm run watch && npm run server",
     "start": "npm install && npm run dev"
   }
 }
